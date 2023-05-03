@@ -60,7 +60,7 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
-
+// Need a getting for the date/time
 thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
