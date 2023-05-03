@@ -13,20 +13,26 @@ module.exports = {
   createUser(req, res) {
   User.create(req.body)
   .then((user) => res.json(user))
-  .catch((err) => res.status(500).json(err))
-  },
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err)})
+},
 
   // GET all Users
 getAllUsers(req, res){
 User.find()
 .then((user) => res.json(user))
-.catch((err) => res.status(500).json(err))
+.catch((err) => {
+  console.log(err);
+  res.status(500).json(err)})
 },
   // GET a single user by _id
 getUserByID(req, res){
   User.findById(req.params.id)
   .then((user) => res.json(user))
-  .catch((err) => res.status(500).json(err))
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err)})
 },
   // PUT to update a user by its _id
   updateUserByID(req, res){
@@ -36,7 +42,9 @@ getUserByID(req, res){
       {runValidators: true, new: true}
       )
     .then((user) => res.json(user))
-    .catch((err) => res.status(500).json(err))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err)})
   },
   // DELETE to remove a user byt its _id
   deleteUserByID(req, res){
@@ -45,6 +53,29 @@ getUserByID(req, res){
       {runValidators: true, new: true}
       )
     .then((user) => res.json(user))
-    .catch((err) => res.status(500).json(err))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err)})
   },
+  // POST to add a new friend to a user's friend list
+  async addNewFriend(req, res){
+    console.log(req.params);
+    console.log(req.params.userId);
+    console.log(req.params.friendId);
+    try {
+      const addFriend = await User.findOneAndUpdate(
+        { _id: req.params.userid },
+        { $push: { friends: req.params.friendId } },
+        { new: true, runValidators: true },
+        );
+      if (!addFriend) {
+        return res.status(404).json({ message: "ID does not match" });
+      }
+      res.status(200).json(addFriend);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+   // DELETE a friend from a user's friend list
+  }
 }
