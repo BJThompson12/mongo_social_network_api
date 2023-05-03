@@ -59,12 +59,9 @@ getUserByID(req, res){
   },
   // POST to add a new friend to a user's friend list
   async addNewFriend(req, res){
-    console.log(req.params);
-    console.log(req.params.userId);
-    console.log(req.params.friendId);
     try {
       const addFriend = await User.findOneAndUpdate(
-        { _id: req.params.userid },
+        { _id: req.params.userId },
         { $push: { friends: req.params.friendId } },
         { new: true, runValidators: true },
         );
@@ -76,6 +73,22 @@ getUserByID(req, res){
       console.log(err);
       res.status(500).json(err);
     }
-   // DELETE a friend from a user's friend list
-  }
+  },
+  // DELETE a friend from a user's friend list
+  async removeFriend(req, res){
+    try {
+      const addFriend = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { new: true, runValidators: true },
+        );
+      if (!addFriend) {
+        return res.status(404).json({ message: "ID does not match" });
+      }
+      res.status(200).json(addFriend);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+}
 }
