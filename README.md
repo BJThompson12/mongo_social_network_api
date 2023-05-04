@@ -17,22 +17,14 @@
   ## Frameworks 🧰
   Node JS, MongoDB, Mongoose
   ## Installation 🛠️ 
-  `npm init`
+  `npm i`
 
   ## Usage 🖥️ 
   Run the following command at the root of your project and answer the prompted questions:
 
-  `mysql -u root -p`
-
-Enter PW when promted
-
-  `source db/schema.sql`
-
-  `quit`
-
-  `npm run seed`
+  `node server`
   
-  `npm run watch`
+  Once connected to the server and database, you can use Postman or Insomnia to test the API routes.
   ## License 🔐  
   [MIT](https://opensource.org/license/mit/)
   <br>
@@ -48,10 +40,10 @@ Enter PW when promted
   ## Questions ❓
   [GitHub Profile](github.com/sqweegy12/)  I can be reached at brandonjoel.thompson@gmail.com for any questions.
    ## Screenshots 📸
-  <a href="https://user-images.githubusercontent.com/98428608/228551108-e220c8fc-f000-4abe-8ba1-dce83b2b0cb7.png">Screenshot</a> 
+  N/A
 
   ## Recordings 🎥
-   <a href="https://user-images.githubusercontent.com/98428608/228551164-6c264a7b-98cd-45e6-997c-85244503a8c7.mp4">Recording</a>
+   <a href="https://user-images.githubusercontent.com/98428608/236285663-22b4d59a-bf55-4b04-8880-a1a8e0c6075c.mp4">Recording</a>
 
   ## Acknowledgements 🎉
   N/A
