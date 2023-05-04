@@ -3,12 +3,6 @@ const { Thought, User } = require('../models');
 
 module.exports = {
   // /api/users
-
-  // TEST route
-  // testRoute(req, res) {
-  //   console.log('i made it');
-  // },
-
   //POST a new user
   createUser(req, res) {
     User.create(req.body)
@@ -18,7 +12,6 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-
   // GET all Users
   getAllUsers(req, res) {
     User.find()

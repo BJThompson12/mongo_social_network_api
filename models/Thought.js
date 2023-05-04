@@ -1,8 +1,8 @@
-// create Thought and Reaction Model 
+// create Thought and Reaction Model
 // do SubDoc before the main
 //Reaction is a sub doc
 
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model, Types } = require('mongoose');
 // Schema ONLY
 const reactionSchema = new Schema(
   {
@@ -22,7 +22,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (time) => format_date(time)
+      get: (time) => format_date(time),
     },
   },
   {
@@ -47,7 +47,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (time) => format_date(time)
+      get: (time) => format_date(time),
     },
     username: {
       type: String,
@@ -63,10 +63,10 @@ const thoughtSchema = new Schema(
   }
 );
 // Need a getting for the date/time
-thoughtSchema.virtual("reactionCount").get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
-const Thought = model("thought", thoughtSchema);
+const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;
